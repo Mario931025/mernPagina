@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button, Icon} from 'antd'
+import {Button, Icon} from 'antd';
+import {Link} from 'react-router-dom';
 import { MenuFoldOutlined,PoweroffOutlined,MenuUnfoldOutlined, HomeOutlined } from "@ant-design/icons";
 import logo from "../../../assets/img/png/BUNKAN_NICHIBOKU-02.png";
 import './MenuTop.scss';
@@ -10,12 +11,16 @@ export default function MenuTop(props){
     return (
         <div className="menu-top">
             <div className="menu-top__left">
-                <img 
+                    <Link to={"/admin"}>
+                    <img 
                     className="menu-top__left-logo"
                     src={logo}
                     alt="BUNKAN NICHIBOKU"
+                   
                  
                 />
+                    </Link>
+                
 
                     <Button type="link" onClick={() => setmenuCollapsed(!menuCollapsed)}>
                          {menuCollapsed ? < HomeOutlined /> : <MenuFoldOutlined />}
