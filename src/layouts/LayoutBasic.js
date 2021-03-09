@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import {Layout} from 'antd'
 
 import './LayoutBasic.scss';
@@ -14,6 +14,7 @@ export default function LayoutBasic(props) {
 
 
     return (
+        
     <Layout>
         <h2>Menu...</h2>
         <Layout>
@@ -36,15 +37,22 @@ export default function LayoutBasic(props) {
 function LoadRouters({routes}){
 
   
-    return routes.map((route,index)=>(
+    return (
+    <Switch>
 
-        <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={route.component} //no hay ruitas hijas que pasarle
-        />
+   {
+    routes.map((route,index)=>(
+
+    <Route
+        key={index}
+        path={route.path}
+        exact={route.exact}
+        component={route.component} //no hay ruitas hijas que pasarle
+    />
     ))
+   }
+    </Switch>
+    )
 }
 
 

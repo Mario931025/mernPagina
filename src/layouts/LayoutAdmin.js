@@ -1,6 +1,8 @@
-import React from 'react'
-import {Route} from "react-router-dom"
-import {Layout} from 'antd'
+import React, {useState} from 'react'
+import {Route,Switch} from "react-router-dom"
+import {Layout} from 'antd';
+import MenuTop from '../components/Admin/MenuTop'
+import MenuSider from '../components/Admin/MenuSider'
 
 import "./LayoutAdmin.scss"
 import routes from '../config/Routes';
@@ -10,19 +12,24 @@ import routes from '../config/Routes';
 export default function LayoutAdmin(props) {
     
 const {routes} = props;
+const [menuCollapsed, setmenuCollapsed] = useState(false);
 const { Header, Footer, Sider, Content } = Layout;
 
     return (
         
     <Layout>
-        <h2>Menu Sider</h2>
         
-        <Layout>
-            <Header>Header</Header>
-            <Content>
-                <LoadRouters routes={routes}/>
+        <MenuSider menuCollapsed={menuCollapsed}/>
+
+        
+        <Layout className="layout-admin" style={{marginLeft: menuCollapsed ? "80px" : "200px"}}>
+            <Header className="layout-admin__header">
+                <MenuTop menuCollapsed={menuCollapsed} setmenuCollapsed={setmenuCollapsed}/>
+            </Header>
+            <Content  className="layout-admin__content">
+                <LoadRoutes routes={routes}/>
             </Content>
-            <Footer>Mario Garcia</Footer>
+            <Footer  className="layout-admin__footer">Mario Garcia</Footer>
         </Layout>
      
     </Layout>
@@ -35,22 +42,24 @@ const { Header, Footer, Sider, Content } = Layout;
 
 
 
-function LoadRouters(props){
+function LoadRoutes(props){
 
     const {routes} = props;
 
-    //hacemos un bucle para que recorra todas las rutas
+    return (
 
-    return routes.map((route,index)=>(
+        <Switch>
+
+      {routes.map((route,index)=>(
         <Route
             key={index}
             path={route.path}
             exact={route.exact}
             component={route.component} //no hay ruitas hijas que pasarle
-        />
-    ))
+        /> ))}
+        </Switch>
 
-
+    );
 }
 
 
