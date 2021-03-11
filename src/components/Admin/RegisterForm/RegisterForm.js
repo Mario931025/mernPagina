@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {MailOutlined,LockOutlined  } from '@ant-design/icons'
 import {Form,Input,Button,Checkbox,notification} from 'antd'
 import { emailValidation, minLenghtValidation} from '../../../utils/FormValidation'
-
+import {signUpApi} from '../../../api/user'
 
 import "./RegisterForm.scss"
 
@@ -76,8 +76,39 @@ const inputValidation = e =>{
 
     const register = e =>{
     
+
     
        console.log(formValid)
+
+       const {email,password,repeatPassword,privacyPolicy} = formValid;
+
+       const emailVal = inputs.email;
+        const passwordVal = inputs.password;
+        const repeatPasswordVal = inputs.repeatPassword;
+        const privacyPolicyVal = inputs.privacyPolicy;
+
+        if(!emailVal || !passwordVal || !repeatPasswordVal || !privacyPolicyVal){
+            notification['error']({
+                message :"todos los campos son obligatorios. すべてのフィールドを確認してください。"
+            })
+        }else{
+            if(passwordVal !== repeatPasswordVal){
+                notification["error"]({
+                    message :"Las contraseñas deben de ser iguales, recuerda usar mayúsculas, minúsculas y número"
+                })
+            }else{
+                notification["success"]({
+                    message :"Cuenta creada, !ようこそ!"
+                })
+
+                //CONECTA CON API Y REGISTA EL USUARIO
+
+                const result = signUpApi(inputs)
+
+            }
+        }
+
+
     }
 
 
