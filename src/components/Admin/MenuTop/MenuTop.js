@@ -18,7 +18,7 @@ export default function MenuTop(props){
                     alt="BUNKAN NICHIBOKU"
                    
                  
-                />
+                     />
                     </Link>
                 
 

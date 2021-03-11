@@ -3,7 +3,7 @@ import LayoutBasic from '../layouts/LayoutBasic';
 
 //admin pages
 import AdminHome from '../pages/Admin'
-import SignIn from '../pages/Admin/SignIn'
+import SignIn from '../pages/Admin/SignIn/SignIn'
 
 
 //pages
