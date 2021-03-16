@@ -74,13 +74,11 @@ const inputValidation = e =>{
 
 
 
-    const register = e =>{
+    const register = async e =>{
     
 
     
-       console.log(formValid)
-
-       const {email,password,repeatPassword,privacyPolicy} = formValid;
+      
 
        const emailVal = inputs.email;
         const passwordVal = inputs.password;
@@ -97,18 +95,56 @@ const inputValidation = e =>{
                     message :"Las contraseñas deben de ser iguales, recuerda usar mayúsculas, minúsculas y número"
                 })
             }else{
-                notification["success"]({
-                    message :"Cuenta creada, !ようこそ!"
-                })
+                
 
                 //CONECTA CON API Y REGISTA EL USUARIO
 
-                const result = signUpApi(inputs)
+                const result = await signUpApi(inputs)
+                
+
+                if(!result.ok){
+                    notification["error"]({
+                        message: result.message
+                    })
+                    resetForm();
+                }else{
+                    notification["success"]({
+                        message: result.message
+                    })
+
+                    resetForm();
+                }
 
             }
         }
 
 
+    }
+
+
+
+    const resetForm = ()=>{
+        const inputs = document.getElementsByTagName("input");
+
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].classList.remove("success");
+            inputs[i].classList.remove("error");
+        }
+
+        setInputs({
+            email:"",
+            password:"",
+            repeatPassword: "",
+            privacyPolicy: false
+        })
+
+        setformValid({
+            
+            email:false,
+            password:false,
+            repeatPassword: false,
+            privacyPolicy: false
+        })
     }
 
 
