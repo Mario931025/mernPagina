@@ -28,6 +28,14 @@ import "./MenuSider.scss";
                     <span className="nav-text">Usuarios</span>
                     </Link>
                 </Menu.Item>
+
+
+                <Menu.Item key="/admin/menu">
+                    <Link to={"/admin/menu"}>
+                    <MenuOutlined/>
+                    <span className="nav-text">Menu Web</span>
+                    </Link>
+                </Menu.Item>
             </Menu>
         </Sider>
     )

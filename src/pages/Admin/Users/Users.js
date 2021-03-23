@@ -7,30 +7,33 @@ import "./users.scss"
 
 export default function Users(){
 
-    const [userActive, setuserActive] = useState([]);
-    const [userInactive, setuserInactive] = useState([]);
+    const [usersActive, setusersActive] = useState([]);
+    const [usersInactive, setusersInactive] = useState([]);
+    const [reloadUsers,setRealoadUsers] = useState(false);
     const token = getAccessToken()
+
 
 
     useEffect(() => {
         
        getUsersActiveApi(token,true).then(response => {
-           setuserActive(response);
-        })
-    }, [token])
+        
+           setusersActive(response.users);
+         })
 
-    useEffect(() => {
         
         getUsersActiveApi(token,false).then(response => {
-            setuserInactive(response);
+            setusersInactive(response.users);
          })
-     }, [token])
+
+         setRealoadUsers(false);
+     }, [token,reloadUsers])
  
 
 
     return(
         <div className="users">
-            <ListUsers userActive={userActive} userInactive={userInactive}/>
+            <ListUsers usersActive={usersActive} usersInactive={usersInactive} setRealoadUsers={setRealoadUsers}/>
         </div>
     )
 }
