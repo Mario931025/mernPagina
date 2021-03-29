@@ -1,10 +1,19 @@
 import React from 'react'
+import MainBanner from '../components/Web/MainBanner'
+import HomeCourses from '../components/Web/HomeCourses'
+import HowCoursesWorks from '../components/Web/HowCoursesWorks'
+import HowMMyCourseWorks from '../components/Web/HowCoursesWorks'
+import ReviewCourses  from '../components/Web/ReviewCourses'
+
 
 function Home() {
     return (
-        <div>
-            <h1>Estamos en home</h1>
-        </div>
+        <>
+        <MainBanner/>
+        <HomeCourses/>
+        <HowMMyCourseWorks/>
+        <ReviewCourses/>
+        </>
     )
 }
 

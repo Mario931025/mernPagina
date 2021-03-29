@@ -9,9 +9,11 @@ import MenuWeb from '../pages/Admin/MenuWeb';
 
 
 
+
 //pages
 import Home from '../pages/Home';
 import Contact from '../pages/Contact'
+import Courses from '../pages/Courses'
 import Error404 from '../pages/Error404';
 
 
@@ -65,6 +67,12 @@ const routes = [
             component: Contact,
             exact: true
             },
+            ,
+            {
+            path:"/courses",
+            component: Courses,
+            exact: true
+            }
             ,
             {
                 

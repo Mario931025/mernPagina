@@ -1,6 +1,8 @@
 import React from 'react'
 import {Route, Switch} from 'react-router-dom'
-import {Layout} from 'antd'
+import {Layout,Row,Col} from 'antd'
+import MenuTop from '../components/Web/MenuTop'
+import Footer from '../components/Web/Footer'
 
 import './LayoutBasic.scss';
 
@@ -10,25 +12,23 @@ export default function LayoutBasic(props) {
        //los props contienen todo el sistema de rutas de route.js
    
     const {routes} = props;
-    const {Content,Footer} = Layout;
+ 
 
-
-    return (
-        
-    <Layout>
-        <h2>Menu...</h2>
-        <Layout>
-            <Content>
-                <LoadRouters routes={routes}/>
-            </Content>
-
-            <Footer>
-                Mario Garcia Angeles
-            </Footer>
-        </Layout>
-     
-    </Layout>
+    return(
+        <>
+        <Row>
+            <Col lg={4}/>
+            <Col lg={16}>
+            <MenuTop/>
+          
+            </Col>
+            <Col lg={4}/>
+        </Row>
+          <LoadRouters routes={routes}/>
+          <Footer/>
+        </>
     )
+
 }
 
 

@@ -2,6 +2,8 @@ import React from "react";
 import {Modal as ModalAntd} from 'antd'
 
 export default function Modal(props){
+
+    console.log(props)
     const {children,title,isVisible,setIsVisible} = props;
 
     return(
