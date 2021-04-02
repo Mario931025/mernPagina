@@ -9,7 +9,7 @@ import "./EditFormWebForm.scss";
 export default function EditMenuWebForm(props){ 
     
    
-    const {setIsVisibleModal, setReloadMenuWeb, menu} = props;
+    const {setIsVisible, setReloadMenuWeb, menu} = props;
     const [menuWebData, setMenuWebData] = useState(menu)
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function EditMenuWebForm(props){
                 notification["success"]({
                     message: response
                 })
-                setIsVisibleModal(false);
+                setIsVisible(false);
                 setReloadMenuWeb(true);
             })
             .catch(()=>{

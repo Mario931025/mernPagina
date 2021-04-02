@@ -17,7 +17,7 @@ import { addPostApi, updatePostApi } from "../../../../api/post";
 import "./AddEditPostForm.scss";
 
 export default function AddEditPostForm(props) {
-  const { setIsVisibleModal, setReloadPosts, post } = props;
+  const { setIsVisible, setReloadPosts, post } = props;
   const [postData, setPostData] = useState({});
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function AddEditPostForm(props) {
         notification[typeNotification]({
           message: response.message
         });
-        setIsVisibleModal(false);
+        setIsVisible(false);
         setReloadPosts(true);
         setPostData({});
       })
@@ -73,7 +73,7 @@ export default function AddEditPostForm(props) {
         notification[typeNotification]({
           message: response.message
         });
-        setIsVisibleModal(false);
+        setIsVisible(false);
         setReloadPosts(true);
         setPostData({});
       })

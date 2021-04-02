@@ -11,7 +11,7 @@ import "./EditUserForm.scss";
 
 
 export default function EditUserForm(props){
-    const {user,setisVisibleModal,setRealoadUsers} = props;
+    const {user,setIsVisible,setRealoadUsers} = props;
     const [avatar, setAvatar] = useState(null);
 //se guarda la info del usuario
 
@@ -95,7 +95,7 @@ const updateUser = e =>{
                         message : result.message
                     });
 
-                    setisVisibleModal(false)
+                    setIsVisible(false)
                     setRealoadUsers(true)
                     
                 })
@@ -106,7 +106,7 @@ const updateUser = e =>{
             notification["success"]({
                 message : result.message
             });
-            setisVisibleModal(false)
+            setIsVisible(false)
             setRealoadUsers(true)
         })
     }

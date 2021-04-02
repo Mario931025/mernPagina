@@ -14,7 +14,7 @@ function Blog(props) {
   const { location, history } = props;
   const [posts, setPosts] = useState(null);
   const [reloadPosts, setReloadPosts] = useState(false);
-  const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const [isVisibleModal, setIsVisible] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState(null);
   const { page = 1 } = queryString.parse(location.search);
@@ -39,11 +39,11 @@ function Blog(props) {
   }, [page, reloadPosts]);
 
   const addPost = () => {
-    setIsVisibleModal(true);
+    setIsVisible(true);
     setModalTitle("Creando nuevo post");
     setModalContent(
       <AddEditPostForm
-        setIsVisibleModal={setIsVisibleModal}
+        setIsVisible={setIsVisible}
         setReloadPosts={setReloadPosts}
         post={null}
       />
@@ -51,11 +51,11 @@ function Blog(props) {
   };
 
   const editPost = post => {
-    setIsVisibleModal(true);
+    setIsVisible(true);
     setModalTitle("Editar post");
     setModalContent(
       <AddEditPostForm
-        setIsVisibleModal={setIsVisibleModal}
+        setIsVisible={setIsVisible}
         setReloadPosts={setReloadPosts}
         post={post}
       />
@@ -82,7 +82,7 @@ function Blog(props) {
       <Modal
         title={modalTitle}
         isVisible={isVisibleModal}
-        setIsVisible={setIsVisibleModal}
+        setIsVisible={setIsVisible}
         width="75%"
       >
         {modalContent}

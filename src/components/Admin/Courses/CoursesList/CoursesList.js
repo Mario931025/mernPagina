@@ -18,7 +18,7 @@ const { confirm } = ModalAntd;
 export default function CoursesList(props) {
   const { courses, setReloadCourses } = props;
   const [listCourses, setListCourses] = useState([]);
-  const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const [isVisibleModal, setIsVisible] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState(null);
 
@@ -50,22 +50,22 @@ export default function CoursesList(props) {
   };
 
   const addCourseModal = () => {
-    setIsVisibleModal(true);
+    setIsVisible(true);
     setModalTitle("Creando nuevo curso");
     setModalContent(
       <AddEditCourseForm
-        setIsVisibleModal={setIsVisibleModal}
+        setIsVisible={setIsVisible}
         setReloadCourses={setReloadCourses}
       />
     );
   };
 
   const editCourseModal = course => {
-    setIsVisibleModal(true);
+    setIsVisible(true);
     setModalTitle("Actualizando curso");
     setModalContent(
       <AddEditCourseForm
-        setIsVisibleModal={setIsVisibleModal}
+        setIsVisible={setIsVisible}
         setReloadCourses={setReloadCourses}
         course={course}
       />
@@ -120,7 +120,7 @@ export default function CoursesList(props) {
       <Modal
         title={modalTitle}
         isVisible={isVisibleModal}
-        setIsVisible={setIsVisibleModal}
+        setIsVisible={setIsVisible}
       >
         {modalContent}
       </Modal>

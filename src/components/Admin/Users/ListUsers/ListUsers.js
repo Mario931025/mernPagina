@@ -23,18 +23,18 @@ export default function ListUsers(props){
   
    const [viewUsersActives, setviewUsersActives] =  useState(true)
 
-   const [isVisibleModal, setisVisibleModal] = useState(false)
+   const [isVisibleModal, setIsVisible] = useState(false)
    const [modalTitle, setmodalTitle] = useState("");
    const [modalContent, setmodalContent] = useState(null)
 
 
    const addUserModal = () =>{
 
-        setisVisibleModal(true);
+        setIsVisible(true);
         setmodalTitle("Creando nuevo usuario");
         setmodalContent(
             <AddUserForm
-                setisVisibleModal={setisVisibleModal}
+                setIsVisible={setIsVisible}
                 setRealoadUsers={setRealoadUsers}
             />
         )
@@ -64,7 +64,7 @@ export default function ListUsers(props){
           
             {viewUsersActives ? 
             <UsersActive usersActive={usersActive} 
-            setisVisibleModal={setisVisibleModal} 
+            setIsVisible={setIsVisible} 
             setmodalTitle={setmodalTitle}
             setmodalContent={setmodalContent}
             setRealoadUsers={setRealoadUsers}
@@ -73,7 +73,7 @@ export default function ListUsers(props){
         <Modal
             title={modalTitle}
             isVisible={isVisibleModal}
-            setIsVisible={setisVisibleModal}
+            setIsVisible={setIsVisible}
         >
            {modalContent}
         </Modal>
@@ -85,14 +85,14 @@ export default function ListUsers(props){
 
 function UsersActive(props){
 
-    const { usersActive,setisVisibleModal,setmodalTitle,setmodalContent,usersInactive,setRealoadUsers} = props;
+    const { usersActive,setIsVisible,setmodalTitle,setmodalContent,usersInactive,setRealoadUsers} = props;
 
 
     const editUser = user =>{
         //usa la info de cada usuario 
-        setisVisibleModal(true)
+        setIsVisible(true)
         setmodalTitle(`Editar ${user.name} ${user.lastname}`);
-        setmodalContent(<EditUserForm user={user } setisVisibleModal={setisVisibleModal } setRealoadUsers={setRealoadUsers}/>)
+        setmodalContent(<EditUserForm user={user } setIsVisible={setIsVisible } setRealoadUsers={setRealoadUsers}/>)
     }
 
     return (

@@ -11,7 +11,7 @@ export default function AddMenuWebForm(props){
    
     
 
-    const {setIsVisibleModal, setReloadMenuWeb} = props;
+    const {setIsVisible, setReloadMenuWeb} = props;
     const [menuWebData, setmenuWebData] = useState({})
 
 
@@ -39,7 +39,7 @@ export default function AddMenuWebForm(props){
                         message: response
                     })
 
-                    setIsVisibleModal(false);
+                    setIsVisible(false);
                     setReloadMenuWeb(true);
                     setmenuWebData({})
                     finalData = {};

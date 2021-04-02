@@ -9,7 +9,7 @@ import { KeyOutlined,LinkOutlined,GiftOutlined,DollarCircleOutlined  } from "@an
 import "./AddEditCourseForm.scss";
 
 export default function AddEditCourseForm(props) {
-  const { setIsVisibleModal, setReloadCourses, course } = props;
+  const { setIsVisible, setReloadCourses, course } = props;
   const [courseData, setCourseData] = useState({});
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function AddEditCourseForm(props) {
           notification[typeNotification]({
             message: response.message
           });
-          setIsVisibleModal(false);
+          setIsVisible(false);
           setReloadCourses(true);
           setCourseData({});
         })
@@ -56,7 +56,7 @@ export default function AddEditCourseForm(props) {
         notification[typeNotification]({
           message: response.message
         });
-        setIsVisibleModal(false);
+        setIsVisible(false);
         setReloadCourses(true);
         setCourseData({});
       })

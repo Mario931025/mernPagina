@@ -18,7 +18,7 @@ export default function MenuWebList(props){
 
     //estado del nuevo estado del menu
     const [listItems, setListItems] = useState([])
-    const [isVisibleModal, setIsVisibleModal] = useState(false);
+    const [isVisibleModal, setIsVisible] = useState(false);
     const [modalTitle, setModalTitle] = useState("")
     const [modalContent, setModalContent] = useState(null);
 
@@ -79,11 +79,11 @@ const accesToken = getAccessToken();
     //función del modal para los botones
 
     const addMenuWebModal = () =>{
-        setIsVisibleModal(true);
+        setIsVisible(true);
         setModalTitle("Creando nuevo Menu");
         setModalContent(
             <AddMenuWebForm
-                setIsVisibleModal={setIsVisibleModal}
+                setIsVisible={setIsVisible}
                 setReloadMenuWeb={setReloadMenuWeb}
             />
         )
@@ -122,11 +122,11 @@ const accesToken = getAccessToken();
 
     //funcion para editar el form
     const editMenuWebModal = menu =>{
-        setIsVisibleModal(true);
+        setIsVisible(true);
         setModalTitle(`Editanto menu: ${menu.title}`);
         setModalContent(
             <EditMenuWebForm
-                setIsVisibleModal={setIsVisibleModal}
+                setIsVisible={setIsVisible}
                 setReloadMenuWeb={setReloadMenuWeb}
                 menu={menu}
             />
@@ -148,7 +148,7 @@ const accesToken = getAccessToken();
             <Modal
                 title={modalTitle}
                 isVisible={isVisibleModal}
-                setIsVisibleModal={setIsVisibleModal}
+                setIsVisible={setIsVisible}
             >
                 {modalContent}
 

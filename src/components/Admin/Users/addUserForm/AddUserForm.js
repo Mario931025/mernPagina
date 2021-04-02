@@ -19,7 +19,7 @@ import "./AddUserForm.scss";
 
 export default function EditUserForm(props){
 
-    const {setisVisibleModal,setRealoadUsers} = props;
+    const {setIsVisible,setRealoadUsers} = props;
     const [userData,setUserData] = useState({});
 
     const addUser = e =>{
@@ -49,7 +49,7 @@ export default function EditUserForm(props){
                         message : response
                     })
 
-                    setisVisibleModal(false);
+                    setIsVisible(false);
                     setRealoadUsers(true);
                     setUserData({});
                 })
